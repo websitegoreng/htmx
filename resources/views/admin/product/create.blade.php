@@ -9,9 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex flex-col justify-center w-full">
                 <form class="flex flex-col gap-y-4 justify-center w-3/4 mx-auto" action="{{ route('product.store') }}"
-                    method="post" enctype="multipart/form-data">
+                    method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('POST')
                     <div class="flex flex-col">
                         <label for="name">Nama</label>
                         <input name="name" type="text" placeholder="Product Name">

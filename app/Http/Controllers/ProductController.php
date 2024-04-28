@@ -47,23 +47,37 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+        // $validated = $request->validate([
+        //     "name" => ["required", "string", "max:255"],
+        //     "price_old" => ["required", "numeric", "min:0"],
+        //     "price_new" => ["required", "numeric", "min:0"],
+        //     "available_stock" => ["required", "numeric", "min:0"],
+        //     "stock" => ["required", "numeric", "min:0"],
+        //     "rating" => ["required", "numeric", "min:0"],
+        //     "desc" => ["required", "string", "max:2048"],
+        //     "brand" => ["required", "string", "max:255"],
+        //     "product_category_id" => ["required", "numeric", "min:0"],
+        // ]);
         $validated = $request->validate([
-            "name" => ["required", "string", "max:255"],
-            "price_old" => ["required", "numeric", "min:0"],
-            "price_new" => ["required", "numeric", "min:0"],
-            "available_stock" => ["required", "numeric", "min:0"],
-            "stock" => ["required", "numeric", "min:0"],
-            "rating" => ["required", "numeric", "min:0"],
-            "desc" => ["required", "string", "max:2048"],
-            "brand" => ["required", "string", "max:255"],
-            "product_category_id" => ["required", "numeric", "min:0"],
+            "name" => ["required"],
+            "price_old" => ["required"],
+            "price_new" => ["required"],
+            "available_stock" => ["required"],
+            "stock" => ["required"],
+            "rating" => ["required"],
+            "desc" => ["required"],
+            "brand" => ["required"],
+            "product_category_id" => ["required"],
         ]);
+
 
         DB::beginTransaction();
         try {
 
             $validated["slug"] = Str::slug($request->name);
-            $newproduct = Product::create($validated);
+            // dd(Product::create($validated));
+            Product::create($validated);
             DB::commit();
 
             return redirect()->to_route("admin.product.index")->with("success", "Product added successfully");
