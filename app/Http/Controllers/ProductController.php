@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductCategory;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,7 +33,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("admin.product.create");
+        $categories = ProductCategory::all();
+        return view("admin.product.create", [
+            "categories" => $categories
+        ]);
     }
 
     /**
