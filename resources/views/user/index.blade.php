@@ -30,7 +30,7 @@
         </nav>
     </header>
     <main>
-        <section class="flex w-full justify-center items-center mx-auto">
+        <div class="flex w-full justify-center items-center mx-auto">
             <div class="flex ">
                 <div class="flex flex-col">
                     <h1>Merah Putih</h1>
@@ -45,7 +45,7 @@
             <div class="w-full">
                 <img src="{{asset('/Assets/banner/home.png')}}" alt="">
             </div>
-        </section>
+        </div>
     </main>
     <footer>
 
